@@ -20,3 +20,188 @@
     font-style: normal;
     font-variation-settings: 'wdth' 100;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.input-error {
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    color: #cf2f2f;
+    font-size: 16px;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.green {
+    color: #4adf86;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1c1c1c;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.wrapper {
+    width: 550px;
+    height: 550px;
+    padding: 0 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #1f2937;
+}
+
+.title {
+    margin-bottom: 5px;
+    font-size: 40px;
+    line-height: 40px;
+    color: #fff;
+}
+
+.sub-title {
+    margin-bottom: 18px;
+    color: #c4c3c3;
+    font-size: 25px;
+}
+
+.btn {
+    justify-content: center;
+    align-items: center;
+    width: 191px;
+    height: 42px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 6px;
+    background-color: #10b981;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.psw-length {
+    flex-direction: column;
+    padding-right: 100px;
+    position: relative;
+}
+
+.psw-length label {
+    display: block;
+    padding: 10px 0;
+}
+
+#psw-number {
+    display: block;
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+    margin-right: 20px;
+    border-radius: 3px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.range-input {
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.range-input::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 6px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+.range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #4adf86;
+    margin-top: -6px;
+}
+
+/* .range-input:focus {
+    outline: none;
+}
+
+.range-input:focus::-webkit-slider-runnable-track {
+    background: none;
+} */
+
+.checkbox-item {
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-input {
+    appearance: none;
+    /* -webkit-appearance: none; Safari */
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-right: 15px;
+}
+
+.checkbox-input:checked {
+    background-color: #4adf86;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+.line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 40px 0;
+    background-color: #2f3e53;
+}
+
+#generated-passwords {
+    justify-content: space-between;
+}
+
+.text-input {
+    display: block;
+    width: 211px;
+    height: 39px;
+    background-color: #273549;
+    border-radius: 6px;
+    line-height: 32px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}

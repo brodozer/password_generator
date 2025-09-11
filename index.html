@@ -9,5 +9,41 @@
         <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="index.css" />
     </head>
-    <body></body>
+    <body class="roboto-regular">
+        <div class="wrapper">
+            <h1 class="title karla-bold">Generate a <br /><span class="green">random password</span></h1>
+            <p class="sub-title roboto-light">Never use an insecure password again.</p>
+            <h3>Customize your passwords</h3>
+            <form id="customize-password" class="d-flex">
+                <div class="psw-length d-flex">
+                    <span class="input-error">input must be a number from 8 to 15</span>
+                    <label for="psw-range">Password length (8 - 15)</label>
+                    <div class="d-flex">
+                        <input type="number" id="psw-number" value="8" />
+                        <input type="range" id="psw-range" class="range-input" min="8" max="15" />
+                    </div>
+                </div>
+                <div class="psw-checkboxes">
+                    <div class="checkbox-item d-flex">
+                        <input type="checkbox" id="psw-has-number" class="checkbox-input" />
+                        <label for="psw-has-number">Numbers</label>
+                    </div>
+                    <div class="checkbox-item d-flex">
+                        <input type="checkbox" id="psw-has-symbols" class="checkbox-input" />
+                        <label for="psw-has-symbols">Symbols</label>
+                    </div>
+                </div>
+            </form>
+            <button class="btn d-flex">Generate passwords</button>
+            <span class="line"></span>
+            <form id="generated-passwords" class="d-flex">
+                <div class="gen-psw">
+                    <input type="text" id="gen-psw-first" class="text-input green" />
+                </div>
+                <div class="gen-psw">
+                    <input type="text" id="gen-psw-second" class="text-input green" />
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
