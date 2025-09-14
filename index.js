@@ -117,8 +117,6 @@ pswLengthNumber.addEventListener('change', (ev) => {
 });
 
 function validatePswLength() {
-    //debugger;
-
     if (pswLengthNumber.value < 8) {
         pswLengthNumber.value = 8;
     } else if (pswLengthNumber.value > 15) {
@@ -129,13 +127,12 @@ function validatePswLength() {
 }
 
 function clipBoard(event) {
-    //debugger;
     let input = event.currentTarget;
     let psw = input.value;
     // copy value to clipboard
 
-    input.select();
-    input.setSelectionRange(0, 99999); // For mobile devices
+    //input.select();
+    //input.setSelectionRange(0, 99999); // For mobile devices
 
     // Copy the text inside the text field
     navigator.clipboard.writeText(psw);
@@ -146,7 +143,6 @@ function clipBoard(event) {
 }
 
 function showMsg(el, className, psw) {
-    //debugger;
     el.innerHTML = 'Password ' + '<em class=green">' + psw + '</em>' + ' has been copied!';
     el.classList.add(className);
     setTimeout(() => {
