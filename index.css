@@ -78,13 +78,15 @@ body {
 }
 
 .wrapper {
-    width: 550px;
-    height: 550px;
+    max-width: 550px;
+    min-height: 550px;
     padding: 0 52px;
+    margin: 0 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #1f2937;
+    border-radius: 6px;
 }
 
 .title {
@@ -168,9 +170,13 @@ body {
     background: none;
 } */
 
+.psw-checkboxes {
+    align-self: center;
+}
+
 .checkbox-item {
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 14px;
 }
 
 .checkbox-input {
@@ -216,4 +222,63 @@ body {
     font-size: 16px;
     text-align: center;
     cursor: pointer;
+}
+
+@media screen and (width < 768px) {
+    .wrapper {
+        padding: 0 25px;
+    }
+
+    .title {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .sub-title {
+        font-size: 18px;
+    }
+
+    #customize-password {
+        flex-direction: column;
+    }
+
+    .psw-length {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .range-input {
+        flex: 1;
+    }
+
+    .psw-checkboxes {
+        align-self: start;
+        margin-bottom: 20px;
+    }
+
+    .line {
+        margin: 25px 0;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    #generated-passwords {
+        flex-direction: column;
+    }
+
+    .gen-psw {
+        margin-bottom: 12px;
+    }
+
+    .text-input {
+        width: 100%;
+    }
+
+    .psw-msg {
+        bottom: -18px;
+        text-align: center;
+    }
 }
