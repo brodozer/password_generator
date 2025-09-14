@@ -28,22 +28,26 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-.input-error {
-    display: block;
+.green {
+    color: #4adf86;
+}
+
+.psw-msg {
+    display: none;
     position: absolute;
-    bottom: -10px;
+    bottom: -40px;
     left: 0;
     color: #cf2f2f;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.psw-msg em {
+    color: #4adf86;
 }
 
 input {
     border: none;
     outline: none;
-}
-
-.green {
-    color: #4adf86;
 }
 
 .d-flex {
@@ -52,6 +56,10 @@ input {
 
 .d-none {
     display: none;
+}
+
+.d-block {
+    display: block;
 }
 
 * {
@@ -117,7 +125,7 @@ body {
     padding: 10px 0;
 }
 
-#psw-number {
+#psw-length-number {
     display: block;
     width: 40px;
     height: 30px;
@@ -192,6 +200,10 @@ body {
 
 #generated-passwords {
     justify-content: space-between;
+}
+
+.gen-psw {
+    position: relative;
 }
 
 .text-input {

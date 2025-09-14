@@ -16,34 +16,36 @@
             <h3>Customize your passwords</h3>
             <form id="customize-password" class="d-flex">
                 <div class="psw-length d-flex">
-                    <span class="input-error">input must be a number from 8 to 15</span>
                     <label for="psw-range">Password length (8 - 15)</label>
                     <div class="d-flex">
-                        <input type="number" id="psw-number" value="8" />
-                        <input type="range" id="psw-range" class="range-input" min="8" max="15" />
+                        <input type="number" id="psw-length-number" value="8" />
+                        <input type="range" id="psw-length-range" class="range-input" min="8" max="15" step="1" />
                     </div>
                 </div>
                 <div class="psw-checkboxes">
                     <div class="checkbox-item d-flex">
-                        <input type="checkbox" id="psw-has-number" class="checkbox-input" />
+                        <input type="checkbox" id="psw-has-number" data-obj-key="hasNumbers" class="checkbox-input" />
                         <label for="psw-has-number">Numbers</label>
                     </div>
                     <div class="checkbox-item d-flex">
-                        <input type="checkbox" id="psw-has-symbols" class="checkbox-input" />
+                        <input type="checkbox" id="psw-has-symbols" data-obj-key="hasSymbols" class="checkbox-input" />
                         <label for="psw-has-symbols">Symbols</label>
                     </div>
                 </div>
             </form>
-            <button class="btn d-flex">Generate passwords</button>
+            <button class="btn d-flex gen-psw-btn">Generate passwords</button>
             <span class="line"></span>
             <form id="generated-passwords" class="d-flex">
                 <div class="gen-psw">
-                    <input type="text" id="gen-psw-first" class="text-input green" />
+                    <span class="psw-msg"></span>
+                    <input type="text" id="psw-first-input" class="text-input green" />
                 </div>
                 <div class="gen-psw">
-                    <input type="text" id="gen-psw-second" class="text-input green" />
+                    <span class="psw-msg"></span>
+                    <input type="text" id="psw-second-input" class="text-input green" />
                 </div>
             </form>
         </div>
+        <script src="index.js"></script>
     </body>
 </html>
