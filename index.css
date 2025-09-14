@@ -270,7 +270,7 @@ body {
     }
 
     .gen-psw {
-        margin-bottom: 12px;
+        margin-bottom: 25px;
     }
 
     .text-input {
@@ -278,7 +278,8 @@ body {
     }
 
     .psw-msg {
-        bottom: -18px;
+        bottom: -20px;
+        width: 100%;
         text-align: center;
     }
 }
