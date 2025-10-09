@@ -4,28 +4,23 @@ let checkBoxes = document.querySelectorAll('.checkbox-input');
 let pswInputs = document.querySelectorAll('.text-input');
 const pswLengthRange = document.getElementById('psw-length-range');
 const pswLengthNumber = document.getElementById('psw-length-number');
-
 const errorMsg = document.querySelector('.input-error');
-
 const genPswBtn = document.querySelector('.gen-psw-btn');
-// range
-// numbers
-// symbols
 
 const psw = {
     length: 8,
-    isPswLengthValid: true,
     hasNumbers: false,
     hasSymbols: false,
-    regExpLetters: /[a-zA-Z]+/g,
-    regExpNumbers: /[a-zA-Z0-9]+/g,
-    regExpSymbols: /[^0-9]+/g,
+    regExpLetters: /[a-zA-Z]+/,
+    regExpNumbers: /[a-zA-Z0-9]+/,
+    regExpSymbols: /[^0-9]+/,
     firstInputEl: document.getElementById('psw-first-input'),
     secondInputEl: document.getElementById('psw-second-input'),
     first: '',
     second: '',
 };
 
+//init range
 pswLengthRange.value = psw.length;
 
 function getCustomCharacters() {
@@ -43,14 +38,14 @@ function getCustomCharacters() {
 }
 
 // psw default = ''
-function getPsw(psw, pswLength, quantityOfCharacters) {
-    if (psw.length === pswLength) {
-        console.log('psw is done ', psw);
-        return psw;
+function getPsw(newPsw, pswLength, quantityOfCharacters) {
+    if (newPsw.length === pswLength) {
+        console.log('psw is done ', newPsw);
+        return newPsw;
     } else {
         let index = getRandomIndex(quantityOfCharacters);
-        psw += customCharacters[index];
-        return getPsw(psw, pswLength, quantityOfCharacters);
+        newPsw += customCharacters[index];
+        return getPsw(newPsw, pswLength, quantityOfCharacters);
     }
 }
 
@@ -59,31 +54,17 @@ function renderPsw() {
     psw.secondInputEl.value = psw.second;
 }
 
-function rebind() {
-    //reset options to default
-}
-
 function getRandomIndex(lengthOfCharacters) {
     return Math.floor(Math.random() * lengthOfCharacters);
 }
 
 function filterCharactersByUser(regExp) {
     return characters.filter((el) => {
-        if (el.match(regExp)) {
-            return true;
-        } else {
-            return false;
-        }
+        return el.match(regExp);
     });
 }
 
-// validate input length -> check length of password if(input.value >7 && input.value < 13) -> isValue = true, else isValue = false,
-// launch changeBtnStatus and error handler
-// error handler -> errMsg.classList.toggle('error')
-// changeBtnStatus(isValid) -> btn.disabled = isValid, classList.toggle('disable')
-
 genPswBtn.addEventListener('click', () => {
-    //rebind();
     getPswOpt();
     getCustomCharacters();
     psw.first = getPsw('', psw.length, customCharacters.length);
@@ -94,8 +75,9 @@ genPswBtn.addEventListener('click', () => {
 function getPswOpt() {
     checkBoxes.forEach((el) => {
         let key = el.dataset.objKey;
-        console.log('key ', key);
-        psw[key] = el.checked;
+        let keyValue = el.checked;
+        console.log('key ', key, keyValue);
+        psw[key] = keyValue;
     });
 }
 
@@ -117,33 +99,38 @@ pswLengthNumber.addEventListener('change', (ev) => {
 });
 
 function validatePswLength() {
-    if (pswLengthNumber.value < 8) {
-        pswLengthNumber.value = 8;
-    } else if (pswLengthNumber.value > 15) {
-        pswLengthNumber.value = 15;
+    let length = pswLengthNumber.value;
+    let normalize = null;
+    if (length < 8) {
+        normalize = 8;
+    } else if (length > 15) {
+        normalize = 15;
     } else {
-        console.log(`psw length is ${pswLengthNumber.value}`);
+        normalize = length;
     }
+    pswLengthNumber.value = normalize;
 }
 
 function clipBoard(event) {
     let input = event.currentTarget;
     let psw = input.value;
-    // copy value to clipboard
-
-    //input.select();
-    //input.setSelectionRange(0, 99999); // For mobile devices
 
     // Copy the text inside the text field
-    navigator.clipboard.writeText(psw);
+    // navigator.clipboard.writeText(psw);
 
-    let pswMsg = input.closest('.gen-psw').querySelector('.psw-msg');
-    // show the copied text
-    showMsg(pswMsg, 'd-block', psw);
+    navigator.clipboard
+        .writeText(psw)
+        .then(() => {
+            const pswMsg = input.closest('.gen-psw').querySelector('.psw-msg');
+            showMsg(pswMsg, 'd-block', psw);
+        })
+        .catch((err) => {
+            console.error('Clipboard error:', err);
+        });
 }
 
 function showMsg(el, className, psw) {
-    el.innerHTML = 'Password ' + '<em class=green">' + psw + '</em>' + ' has been copied!';
+    el.innerHTML = 'Password ' + '<em class="green">' + psw + '</em>' + ' has been copied!';
     el.classList.add(className);
     setTimeout(() => {
         el.classList.remove(className);
